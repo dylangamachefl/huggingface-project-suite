@@ -10,11 +10,10 @@ pinned: false
 
 # 🎯 Zero-Shot Text Classifier
 
-An interactive web application that classifies input text into user-defined categories using Hugging Face's zero-shot classification models via the Inference API. This project is part of a 4-week AI project portfolio building challenge.
+An interactive web application that classifies input text into user-defined categories using Hugging Face's zero-shot classification models via the Inference API. 
 
-**Live Demo:** [Link to your Deployed App on Hugging Face Spaces]
+**Live Demo:** [HF Zero-Shot Text Classifier](https://dylangamachefl-hf-zero-shot-classifier.hf.space)
 
-**Project Repository:** `https://github.com/dylangamachefl/hf-zero-shot-classifier`
 
 ## 📖 Overview
 
@@ -72,76 +71,5 @@ Traditional text classification often requires training a model on a predefined 
 *   **Deployment:** Hugging Face Spaces
 *   **Development Environment:** Visual Studio Code (or your preferred IDE), Python Virtual Environment (`venv` or `conda`)
 
-## 🚀 Setup and Local Development
-
-To run this project locally, follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/[Your GitHub Username]/hf-zero-shot-classifier.git
-    cd hf-zero-shot-classifier
-    ```
-
-2.  **Set up a Python virtual environment:**
-    (Assuming you have a shared `venv` or `conda` environment in a parent `ai-portfolio` directory as per the overall plan)
-    ```bash
-    # From within hf-zero-shot-classifier directory:
-    # Example for venv:
-    # For macOS/Linux:
-    source ../venv/bin/activate 
-    # For Windows (Git Bash or PowerShell):
-    # source ../venv/Scripts/activate
-    # For Windows (Command Prompt):
-    # ..\venv\Scripts\activate
-
-    # Example for conda (if your shared env is named 'ai_env'):
-    # conda activate ai_env 
-    ```
-    If you don't have the shared environment or prefer a dedicated one:
-    ```bash
-    python -m venv venv # Or: conda create -n hf_zero_shot_env python=3.9
-    # Activate it:
-    # macOS/Linux: source venv/bin/activate
-    # Windows: venv\Scripts\activate
-    # Conda: conda activate hf_zero_shot_env
-    ```
-
-3.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Set up your Hugging Face API Token:**
-    *   Ensure you have a `.env` file in the root of your main `ai-portfolio` project directory (i.e., one level above this `hf-zero-shot-classifier` project).
-    *   Add your Hugging Face API token to the `.env` file:
-        ```
-        HUGGING_FACE_API_TOKEN="your_hf_api_token_here"
-        ```
-    *   *Note: The `app.py` is configured to look for `.env` in the parent directory. If your `.env` file is elsewhere, you might need to adjust the `load_dotenv()` path in `app.py`.*
-
-5.  **Run the Streamlit application:**
-    ```bash
-    streamlit run app.py
-    ```
-    The application should open in your web browser.
-
 ## 🖼️ Screenshot
-
-<!-- Add your screenshot here -->
-![Application Screenshot](images/zero-shot-classifier-screenshot.png) 
-<!-- Make sure to create an 'images' folder and add your screenshot, 
-     or adjust the path if it's different. -->
-
-## 🔮 Future Enhancements (Optional)
-
-*   **Multi-label classification option:** Allow the model to predict multiple relevant labels if appropriate (some models support this via parameters).
-*   **Adjustable threshold:** Allow users to set a confidence threshold for displayed labels.
-*   **Model selection:** Allow users to choose from a few different zero-shot classification models.
-*   **Example use cases:** Provide example texts and label sets to demonstrate capabilities.
-
-## 🙏 Acknowledgements
-
-*   The Hugging Face team for their incredible models, Inference API, and Spaces platform.
-*   The developers of Streamlit for making web app creation in Python so accessible.
-
----
+![Screenshot 2025-06-25 at 13-44-48 Zero-Shot Text Classifier](https://github.com/user-attachments/assets/c5c4ed6b-1a44-4ccf-b8b5-2e4310178a9d)

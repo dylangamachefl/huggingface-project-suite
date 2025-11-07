@@ -5,22 +5,14 @@ colorFrom: blue # Or any color
 colorTo: green # Or any color
 sdk: streamlit
 app_file: app.py
-# For Docker, you don't usually specify sdk_version directly here
-# unless the template specifically requires it.
-# If your Dockerfile handles Python/Streamlit versions, that's usually enough.
-# If the Streamlit Docker Template implies a specific Dockerfile or setup,
-# then 'sdk: docker' and 'app_file: app.py' are key.
-# The template might also have set 'dockerfile: Dockerfile' if it expects one.
 pinned: false
 ---
 
 # 🌍 Hugging Face Text Translation Tool
 
-An interactive web application that translates text into various languages using Hugging Face's state-of-the-art translation models via the Inference API. This project is part of a 4-week AI project portfolio building challenge.
+An interactive web application that translates text into various languages using Hugging Face's state-of-the-art translation models via the Inference API.
 
-**Live Demo:** [Link to your Deployed App on Hugging Face Spaces]
-
-**Project Repository:** `https://github.com/dylangamachefl/hf-text-translator`
+**Live Demo:** [HF Text Translator App](https://dylangamachefl-hf-text-translator.hf.space)
 
 ## 📖 Overview
 
@@ -75,65 +67,3 @@ In an increasingly globalized world, language barriers can hinder communication 
 *   **Version Control:** Git & GitHub
 *   **Deployment:** Hugging Face Spaces
 *   **Development Environment:** Visual Studio Code (or your preferred IDE), Python Virtual Environment (`venv`)
-
-## 🚀 Setup and Local Development
-
-To run this project locally, follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/[Your GitHub Username]/hf-text-translator.git
-    cd hf-text-translator
-    ```
-
-2.  **Set up a Python virtual environment:**
-    (Assuming you have a shared `venv` in a parent `ai-portfolio` directory as per the overall plan)
-    ```bash
-    # From within hf-text-translator directory:
-    # For macOS/Linux:
-    source ../venv/bin/activate
-    # For Windows (Git Bash or PowerShell):
-    # source ../venv/Scripts/activate
-    # For Windows (Command Prompt):
-    # ..\venv\Scripts\activate
-    ```
-    If you don't have the shared venv or prefer a dedicated one for this project:
-    ```bash
-    python -m venv venv
-    # Activate it:
-    # macOS/Linux: source venv/bin/activate
-    # Windows: venv\Scripts\activate
-    ```
-
-3.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Set up your Hugging Face API Token:**
-    *   Create a `.env` file in the root of your main `ai-portfolio` project directory (i.e., one level above this `hf-text-translator` project).
-    *   Add your Hugging Face API token to the `.env` file:
-        ```
-        HUGGING_FACE_API_TOKEN="your_hf_api_token_here"
-        ```
-    *   *Note: The `app.py` is configured to look for `.env` in the parent directory. If your `.env` file is elsewhere, you might need to adjust the `load_dotenv()` path in `app.py`.*
-
-5.  **Run the Streamlit application:**
-    ```bash
-    streamlit run app.py
-    ```
-    The application should open in your web browser.
-
-## 🔮 Future Enhancements (Optional)
-
-*   **Auto-detect source language:** Implement a feature to automatically detect the language of the input text.
-*   **Support more languages:** Expand the list of available target languages by adding more Helsinki-NLP models.
-*   **Batch translation:** Allow users to upload a file for translating multiple pieces of text.
-*   **Improved UI/UX:** Further refine the user interface for better aesthetics and usability.
-
-## 🙏 Acknowledgements
-
-*   The Hugging Face team for their incredible models, Inference API, and Spaces platform.
-*   The developers of Streamlit for making web app creation in Python so accessible.
-
----

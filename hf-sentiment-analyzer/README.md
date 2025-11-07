@@ -5,12 +5,6 @@ colorFrom: blue # Or any color
 colorTo: green # Or any color
 sdk: streamlit
 app_file: app.py
-# For Docker, you don't usually specify sdk_version directly here
-# unless the template specifically requires it.
-# If your Dockerfile handles Python/Streamlit versions, that's usually enough.
-# If the Streamlit Docker Template implies a specific Dockerfile or setup,
-# then 'sdk: docker' and 'app_file: app.py' are key.
-# The template might also have set 'dockerfile: Dockerfile' if it expects one.
 pinned: false
 ---
 
@@ -19,7 +13,7 @@ pinned: false
 ## Overview
 This project is a web application that performs sentiment analysis on user-provided text. It utilizes the Hugging Face Inference API to leverage a pre-trained sentiment analysis model (`distilbert/distilbert-base-uncased-finetuned-sst-2-english`). The user interface is built with Streamlit.
 
-This is the first project in my [4-Week AI Project Portfolio Action Plan](https://github.com/dylangamachefl/dylangamachefl).
+**Live Demo:** [HF Sentiment Analyzer App](https://dylangamachefl-hf-sentiment-analyzer.hf.space)
 
 ## Problem Solved
 Provides a simple way to quickly determine the sentiment (Positive/Negative) of a piece of text without needing to set up a local model or manage complex infrastructure. Useful for quick checks, demonstrations, or as a component in a larger text processing pipeline.
@@ -54,38 +48,3 @@ Provides a simple way to quickly determine the sentiment (Positive/Negative) of 
      *   `python-dotenv`: For managing environment variables (API key).
 *   **Cloud Service (for API):** Hugging Face
 *   **Deployment (planned):** Hugging Face Spaces
-
-## Setup and Usage Locally
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/dylangamachefl/hf-sentiment-analyzer.git
-    cd hf-sentiment-analyzer
-    ```
-2.  **Create and activate a virtual environment:**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-3.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-4.  **Set up your Hugging Face API Token:**
-    *   Go to your main project directory (e.g., `ai-portfolio` if this project is a subdirectory).
-    *   Ensure you have a `.env` file in that parent directory containing your Hugging Face API token:
-      ```
-      HUGGING_FACE_API_TOKEN="your_actual_hf_api_token_here"
-      ```
-    *   The `app.py` is configured to look for the `.env` file in its parent directory.
-5.  **Run the Streamlit application:**
-    ```bash
-    streamlit run app.py
-    ```
-6.  Open your browser and go to `http://localhost:8501`.
-
-## Screenshot
-(It's a good idea to add a screenshot of your working application here later, once you're happy with it.)
-<!-- Example: ![App Screenshot](path/to/your/screenshot.png) -->
-
-## Future Improvements (Optional)
-*   [Any ideas you have for making it better]

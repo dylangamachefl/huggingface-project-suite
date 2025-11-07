@@ -12,9 +12,7 @@ pinned: false
 
 An interactive web application that generates descriptive captions for uploaded images. This version **directly utilizes the Hugging Face `transformers` library** to load and run a state-of-the-art image captioning model locally within the application's environment. This is the fourth project in a 4-week AI project portfolio building challenge.
 
-**Live Demo:** [Link to your Deployed App on Hugging Face Spaces]
-
-**Project Repository:** `https://github.com/dylangamachefl/hf-image-captioning`
+**Live Demo:** [HF Image Captioning App](https://dylangamachefl-hf-image-captioning.hf.space)
 
 ## 📖 Overview
 
@@ -76,56 +74,6 @@ Generating relevant captions for images has applications in accessibility, conte
 *   **Deployment:** Hugging Face Spaces
 *   **Development Environment:** Visual Studio Code (or your preferred IDE), Python Virtual Environment (`venv` or `conda`)
 
-## 🚀 Setup and Local Development
-
-To run this project locally, follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/[Your GitHub Username]/hf-image-captioning.git
-    cd hf-image-captioning
-    ```
-
-2.  **Set up a Python virtual environment:**
-    (Activate your shared `ai-portfolio` environment or create a dedicated one)
-    ```bash
-    # Example for activating shared venv:
-    # macOS/Linux: source ../venv/bin/activate
-    # Windows: ..\venv\Scripts\activate 
-    ```
-
-3.  **Install dependencies:**
-    This project has significant dependencies.
-    ```bash
-    pip install -r requirements.txt 
-    # Ensure requirements.txt includes: streamlit, Pillow, transformers, torch
-    ```
-    *(Note: `torch` can be a large download. If you have a specific CUDA version for a GPU, you might install PyTorch separately following instructions from [pytorch.org](https://pytorch.org/) before `pip install -r requirements.txt` to ensure compatibility, though the default CPU version usually works fine for CPU inference.)*
-
-4.  **Run the Streamlit application:**
-    ```bash
-    streamlit run app.py
-    ```
-    *   **First Run Note:** The first time you run the app, the `transformers` library will download the specified model (e.g., `Salesforce/blip-image-captioning-base`), which can take several minutes and consume significant disk space (usually in `~/.cache/huggingface/hub/`). Subsequent runs will be much faster as the model will be cached.
-    *   The application should open in your web browser.
-
 ## 🖼️ Screenshot
 
-<!-- Add your screenshot here once the app is working locally -->
-![Application Screenshot](images/image-captioning-transformers-screenshot.png) 
-<!-- Make sure to create an 'images' folder and add your screenshot, 
-     and use a descriptive name. -->
-
-## 🔮 Future Enhancements (Optional)
-
-*   **Allow model selection:** Let users choose from a few different locally available captioning models.
-*   **More detailed error reporting:** For model loading or inference failures.
-*   **Explore quantization or smaller models:** For faster performance or reduced resource usage, especially if deploying to resource-constrained environments.
-
-## 🙏 Acknowledgements
-
-*   The Hugging Face team for their `transformers` library, models, and Spaces platform.
-*   The developers of PyTorch for the underlying deep learning framework.
-*   The developers of Streamlit and Pillow.
-
----
+![Screenshot 2025-06-25 at 13-39-47 Image Captioning Tool (Transformers)](https://github.com/user-attachments/assets/38fba30e-eca8-4dbb-91da-7617f131cc40)
