@@ -1,0 +1,5 @@
+streamlit
+Pillow
+# For transformers and its core backend:
+transformers
+torch
