@@ -16,10 +16,10 @@ While my primary work focuses on complex, enterprise-grade agentic systems, thes
 
 | Project | Description | Live Demo | Source Code |
 | :--- | :--- | :--- | :--- |
-| **Image Captioning Tool** | An interactive web app that generates descriptive captions for uploaded images using the `transformers` library to run a model locally. | [View Live App](https://dylangamachefl-hf-image-captioning.hf.space) | [View Code](./image-captioning/) |
-| **Zero-Shot Classifier**| An interactive web app that classifies text into user-defined categories using Hugging Face's zero-shot models via the Inference API. | [View Live App](https://dylangamachefl-hf-zero-shot-classifier.hf.space) | [View Code](./zero-shot-classifier/) |
-| **Text Translation Tool** | An interactive web app that translates text into various languages using the Hugging Face Inference API and Helsinki-NLP models. | [View Live App](https://dylangamachefl-hf-text-translator.hf.space) | [View Code](./text-translator/) |
-| **Sentiment Analysis App** | A web application that performs sentiment analysis on user-provided text using the Hugging Face Inference API and a DistilBERT model. | [View Live App](https://dylangamachefl-hf-sentiment-analyzer.hf.space) | [View Code](./sentiment-analyzer/) |
+| **Image Captioning Tool** | An interactive web app that generates descriptive captions for uploaded images using the `transformers` library to run a model locally. | [View Live App](https://dylangamachefl-hf-image-captioning.hf.space) | [View Code](./hf-image-captioning/) |
+| **Zero-Shot Classifier**| An interactive web app that classifies text into user-defined categories using Hugging Face's zero-shot models via the Inference API. | [View Live App](https://dylangamachefl-hf-zero-shot-classifier.hf.space) | [View Code](./hf-zero-shot-classifier/) |
+| **Text Translation Tool** | An interactive web app that translates text into various languages using the Hugging Face Inference API and Helsinki-NLP models. | [View Live App](https://dylangamachefl-hf-text-translator.hf.space) | [View Code](./hf-text-translator/) |
+| **Sentiment Analysis App** | A web application that performs sentiment analysis on user-provided text using the Hugging Face Inference API and a DistilBERT model. | [View Live App](https://dylangamachefl-hf-sentiment-analyzer.hf.space) | [View Code](./hf-sentiment-analyzer/) |
 
 ---
 
