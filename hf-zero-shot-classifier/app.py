@@ -1,27 +1,15 @@
-# app.py
-
 import streamlit as st
 import requests
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
-# Assuming your .env file is in the parent 'ai-portfolio' directory
-dotenv_path = os.path.join(
-    os.path.dirname(__file__), "..", ".env"
-)  # Navigate one level up to ai-portfolio
+dotenv_path = os.path.join(os.path.dirname(__file__), "..", ".env")
 load_dotenv(dotenv_path=dotenv_path)
 
 API_TOKEN = os.getenv("HF_TOKEN")
-
-# Define the model API URL
-# Model suggestion from the plan: facebook/bart-large-mnli
-# You can also try smaller ones like 'valhalla/distilbart-mnli-12-3' if 'bart-large-mnli' is too slow/hits rate limits quickly
 MODEL_ID = "facebook/bart-large-mnli"
-# Alternative model: MODEL_ID = "valhalla/distilbart-mnli-12-3"
 API_URL = f"https://api-inference.huggingface.co/models/{MODEL_ID}"
 
-# Headers for the API request
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 
 
@@ -30,7 +18,7 @@ def query_hf_api(payload):
     Sends a request to the Hugging Face Inference API.
     """
     response = requests.post(API_URL, headers=headers, json=payload)
-    response.raise_for_status()  # Raise an exception for HTTP errors (4xx or 5xx)
+    response.raise_for_status()
     return response.json()
 
 
@@ -45,7 +33,6 @@ Enter a piece of text and a comma-separated list of potential labels.
 """
 )
 
-# Input fields
 text_to_classify = st.text_area(
     "Enter text to classify:",
     "The new AI regulations will have a significant impact on technology startups.",
@@ -66,12 +53,11 @@ if st.button("Classify Text"):
     elif not candidate_labels_input.strip():
         st.warning("Please enter some candidate labels.")
     else:
-        # Prepare labels: split string into a list and strip whitespace
         candidate_labels = [
             label.strip()
             for label in candidate_labels_input.split(",")
             if label.strip()
-        ]  # Ensure labels are not empty
+        ]
 
         if not candidate_labels:
             st.warning(
@@ -94,14 +80,10 @@ if st.button("Classify Text"):
                         and "labels" in result
                         and "scores" in result
                     ):
-                        # The API returns 'labels' and 'scores' as parallel lists.
-                        # For most zero-shot models, these are already sorted by score (highest first).
-
                         results_with_scores = list(
                             zip(result["labels"], result["scores"])
                         )
 
-                        # Display them
                         for label, score in results_with_scores:
                             st.write(f"**Label:** {label} - **Score:** {score:.4f}")
 
@@ -113,14 +95,12 @@ if st.button("Classify Text"):
                             )
                     else:
                         st.error("Received an unexpected response format from the API.")
-                        st.json(result)  # Display the raw response for debugging
+                        st.json(result)
 
                 except requests.exceptions.RequestException as e:
                     st.error(f"API Request Failed: {e}")
                     if e.response is not None:
-                        st.error(
-                            f"Response content: {e.response.text}"
-                        )  # Show more details on API error
+                        st.error(f"Response content: {e.response.text}")
                 except Exception as e:
                     st.error(f"An unexpected error occurred: {e}")
 

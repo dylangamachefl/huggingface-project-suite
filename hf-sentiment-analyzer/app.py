@@ -3,17 +3,11 @@ import requests
 import os
 from dotenv import load_dotenv
 
-# --- IMPORTANT: For loading .env file from the PARENT directory ---
-# This assumes your .env file is in the 'ai-portfolio' directory,
-# and 'hf-sentiment-analyzer' is a subdirectory of 'ai-portfolio'.
 dotenv_path = os.path.join(os.path.dirname(__file__), "..", ".env")
 load_dotenv(dotenv_path=dotenv_path)
-# --- End of .env loading section ---
 
-# Retrieve the API token
+# Config
 API_TOKEN = os.getenv("HF_TOKEN")
-
-# Define the Hugging Face Inference API URL and the model
 API_URL = "https://api-inference.huggingface.co/models/distilbert/distilbert-base-uncased-finetuned-sst-2-english"
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 
@@ -21,11 +15,11 @@ headers = {"Authorization": f"Bearer {API_TOKEN}"}
 def query_sentiment_api(payload):
     """Sends a request to the Hugging Face sentiment analysis API."""
     response = requests.post(API_URL, headers=headers, json=payload)
-    response.raise_for_status()  # Raise an exception for HTTP errors
+    response.raise_for_status()
     return response.json()
 
 
-# --- Streamlit App Interface ---
+# --- Streamlit UI ---
 st.set_page_config(layout="wide", page_title="Sentiment Analysis App")
 
 st.title("Sentiment Analysis with Hugging Face 🤗")
@@ -48,11 +42,8 @@ if st.button("Analyze Sentiment"):
             payload = {"inputs": user_input}
             api_response = query_sentiment_api(payload)
 
-            # --- Displaying Results ---
             st.subheader("Analysis Result:")
 
-            # The API response for this model is a list of lists of dictionaries.
-            # Example: [[{'label': 'POSITIVE', 'score': 0.9998772144317627}]]
             if (
                 api_response
                 and isinstance(api_response, list)
@@ -60,23 +51,9 @@ if st.button("Analyze Sentiment"):
                 and api_response[0]
                 and isinstance(api_response[0][0], dict)
             ):
-
-                # For this specific model, we usually get one primary sentiment.
-                # Some models might return scores for multiple labels.
-                # We'll focus on the highest score if multiple are present,
-                # or the first one if it's structured as a list of labels per input.
-
-                # Find the label with the highest score
-                # (Though distilbert-sst-2 usually returns one dominant label directly)
-                # For this model, the structure is often [[{'label': 'POSITIVE', 'score': ...}]]
-                # or [[{'label': 'NEGATIVE', 'score': ...}]]
-
-                # Let's find the dominant sentiment
                 dominant_sentiment = None
                 highest_score = -1
 
-                # The response is a list of results (usually one for single input)
-                # Each result is a list of label-score dictionaries
                 for label_score_pair in api_response[0]:
                     label = label_score_pair.get("label")
                     score = label_score_pair.get("score")
@@ -98,7 +75,7 @@ if st.button("Analyze Sentiment"):
                             f"**Overall Sentiment: <span style='color:red;'>{dominant_sentiment}</span> (Score: {highest_score:.4f})**",
                             unsafe_allow_html=True,
                         )
-                    else:  # Other labels, if any
+                    else:
                         st.markdown(
                             f"**Overall Sentiment: {dominant_sentiment} (Score: {highest_score:.4f})**"
                         )
@@ -111,7 +88,7 @@ if st.button("Analyze Sentiment"):
                     st.json(api_response)
             else:
                 st.error("Received an unexpected response format from the API.")
-                st.json(api_response)  # Show the actual response for debugging
+                st.json(api_response)
 
         except requests.exceptions.HTTPError as http_err:
             st.error(f"API Request HTTP error occurred: {http_err}")
@@ -128,7 +105,5 @@ if st.button("Analyze Sentiment"):
 
 st.sidebar.header("About")
 st.sidebar.info(
-    "This is Project 1 from the '4-Week AI Project Portfolio Action Plan'. "
-    "It demonstrates calling a Hugging Face Inference API for sentiment analysis "
-    "and displaying the results using a Streamlit UI."
+    "A simple web app for text sentiment analysis using Hugging Face Inference API and Streamlit."
 )
